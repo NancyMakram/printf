@@ -31,9 +31,10 @@ int _printf(const char *format, ...)
 		p++;
 		while (get_flag(p, &params))
 		{
-			p++
+			p++;
 		}
 		p = get_precision(p, &params, ap);
+
 		if (get_modifier(p, &params))
 			p++;
 		if (!get_specifier(p))
