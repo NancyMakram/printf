@@ -33,3 +33,4 @@ int _putchar(int c)
 		buf[i++] = c;
 	return (1);
 }
+
