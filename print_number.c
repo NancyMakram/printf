@@ -1,4 +1,5 @@
 #include "main.h"
+#include <string.h>
 
 /**
  * _isdigit - checks if character is digit
@@ -45,7 +46,7 @@ int print_number(char *str, params_t *params)
 		str++;
 		i--;
 	}
-	if (params->precision != UNIT_MAX)
+	if (params->precision != UINT_MAX)
 		while (i++ < params->precision)
 			*--str = '0';
 	if (neg)
@@ -110,7 +111,7 @@ int print_number_left_shift(char *str, params_t *params)
 	unsigned int n = 0, neg, neg2, i = _strlen(str);
 	char pad_char = ' ';
 
-	if (params->zero_flag && !params->minus_flg)
+	if (params->zero_flag && !params->minus_flag)
 		pad_char = '0';
 	neg = neg2 = (!params->unsign && *str == '-');
 	if (neg && i < params->width && pad_char == '0' && !params->minus_flag)
@@ -127,3 +128,4 @@ int print_number_left_shift(char *str, params_t *params)
 		n += _putchar(pad_char);
 	return (n);
 }
+

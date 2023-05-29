@@ -1,30 +1,36 @@
-#include <unistd.h>
+#include "main.h"
 
 /**
- * _putchar - print char with stdout
- * @ch: char to print
- * Return: Output.
+ * _puts - prints string with new line
+ * @str: string to be printed
+ * Return: void
  */
-int _putchar(char ch)
+int _puts(char *str)
 {
-	static int contador;
-	static char buffer[1024];
+	char *a = str;
 
-	if (ch == -1)
-	{
-		contador = 0;
-		return (0);
-	}
-	if (ch == -2 || contador == 1024)
-	{
-		write(1, buffer, contador);
-		contador = 0;
-	}
-	if (ch != -1 && ch != -2)
-	{
-		buffer[contador] = ch;
-		contador++;
-		return (1);
-	}
-	return (0);
+	while (*str)
+		_putchar(*str++);
+	return (str - a);
 }
+
+/**
+ * _putchar - writes the character c to stdout
+ * @c: character to be printed
+ * Return: 1 on success, -1 on error
+ */
+int _putchar(int c)
+{
+	static int i;
+	static char buf[OUTPUT_BUF_SIZE];
+
+	if (c == BUF_FLUSH || i >= OUTPUT_BUF_SIZE)
+	{
+		write(1, buf, i);
+		i = 0;
+	}
+	if (c != BUF_FLUSH)
+		buf[i++] = c;
+	return (1);
+}
+
