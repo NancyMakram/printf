@@ -10,7 +10,7 @@ int _printf(const char *format, ...)
 	int sum = 0;
 	va_list ap;
 	char *p, *start;
-	params_t params = PARAMS_INIT;
+	params_t params = PARAMS_INT;
 
 	va_start(ap, format);
 
@@ -31,7 +31,7 @@ int _printf(const char *format, ...)
 		while (get_flag(p, &params))
 			p++;
 		p = get_width(p, &params, ap);
-		p = get_precision(p, &params, ap);
+		p = get_percision(p, &params, ap);
 
 		if (get_modifier(p, &params))
 			p++;
