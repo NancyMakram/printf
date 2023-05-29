@@ -11,7 +11,7 @@ int _printf(const char *format, ...)
 	va_list ap;
 	char *p, *start;
 	params_t params = PARAMS_INT;
-
+	
 	va_start(ap, format);
 
 	if (!format || (format[0] == '%' && !format[1]))
@@ -31,7 +31,7 @@ int _printf(const char *format, ...)
 		while (get_flag(p, &params))
 			p++;
 		p = get_width(p, &params, ap);
-		p = get_percision(p, &params, ap);
+		p = get_precision(p, &params, ap);
 
 		if (get_modifier(p, &params))
 			p++;
